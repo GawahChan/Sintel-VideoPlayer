@@ -7,6 +7,7 @@ export const Icon = styled.button`
   background-size: cover;
   background-position: center;
   border: none;
+  cursor: pointer;
 `;
 
 export const PlayIcon = styled(Icon)`
