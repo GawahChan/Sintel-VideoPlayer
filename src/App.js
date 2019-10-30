@@ -1,11 +1,14 @@
 import React from 'react';
-import { GlobalStyle } from './styles';
+import VideoPlayer from './components/videoplayer/VideoPlayer';
+import { GlobalStyle, AppContainer } from './styles';
 
 function App() {
   return (
     <div>
       <GlobalStyle />
-      <h1>HelloWorld!</h1>
+      <AppContainer>
+        <VideoPlayer />
+      </AppContainer>
     </div>
   );
 }
