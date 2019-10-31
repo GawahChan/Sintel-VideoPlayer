@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 
 export const Container = styled.div`
   padding: 5px;
+  box-sizing: border-box;
 `;
 
 export const VideoPlayerContainer = styled.div`
@@ -20,25 +21,30 @@ export const ControlsContainer = styled.div`
 `;
 
 export const ProgressBarContainer = styled(motion.div)`
+  position: relative;
   width: 100%;
   background-color: darkgray;
-  height: 3px;
+  color: red;
+
+  height: 7px;
+  cursor: pointer;
 `;
 
 export const Bar = styled(motion.div)`
-  position: relative;
+  position: absolute;
   background-color: red;
-  height: 3px;
+  height: 100%;
   width: ${props => props.Size || `2px`};
+  pointer-events: none;
 `;
 
 export const Marker = styled.div`
   position: absolute;
   right: -5px;
-  top: -3px;
-  height: 10px;
-  width: 10px;
+  top: -4px;
+  height: 15px;
+  width: 15px;
   background-color: red;
   border-radius: 50%;
-  z-index: 1;
+  cursor: pointer;
 `;

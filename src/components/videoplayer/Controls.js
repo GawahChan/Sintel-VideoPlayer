@@ -4,11 +4,11 @@ import ProgressBar from './ProgressBar';
 import { PlayIcon, PauseIcon } from '../../common/styled';
 import { Container, ControlsContainer } from './styled';
 
-function Controls({ playVideo, toggleVideo, progressBar }) {
+function Controls({ playVideo, toggleVideo, progressBar, seekVideo }) {
   return (
     <ControlsContainer>
       <Container>
-        <ProgressBar status={progressBar} />
+        <ProgressBar status={progressBar} seekVideo={seekVideo} />
       </Container>
       <Container>
         {playVideo ? (
@@ -24,6 +24,7 @@ function Controls({ playVideo, toggleVideo, progressBar }) {
 Controls.propTypes = {
   playVideo: PropTypes.bool,
   toggleVideo: PropTypes.func,
-  progressBar: PropTypes.string
+  progressBar: PropTypes.string,
+  seekVideo: PropTypes.func
 };
 export default Controls;
