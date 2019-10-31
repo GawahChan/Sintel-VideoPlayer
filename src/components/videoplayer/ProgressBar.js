@@ -8,21 +8,24 @@ import {
   Marker
 } from './styled';
 
-function ProgressBar({ status, seekVideo }) {
+function ProgressBar({ seekVideo, videoDuration, progressBarSize }) {
   const progressBarRef = useRef(null);
   const constraintsRef = useRef(null);
 
   const progressBarPosition = event => {
     let offsetWidth = progressBarRef.current.offsetWidth;
-    let videoPosition = (event.pageX - 20) / offsetWidth;
-    seekVideo(videoPosition);
+    let videoPosition = (event.pageX - 25) / offsetWidth;
+
+    let newVideoTime = videoPosition * videoDuration;
+    let newProgressBar = `${videoPosition * 100}%`;
+
+    seekVideo(newVideoTime, newProgressBar);
   };
 
-  console.log('windows width', window.innerWidth);
   return (
     <ProgressBarContainer ref={progressBarRef}>
       <BarContainer onTap={event => progressBarPosition(event)} />
-      <Bar Size={status} />
+      <Bar Size={progressBarSize} />
       <MarkerContainer ref={constraintsRef}>
         <Marker
           drag="x"
@@ -36,8 +39,9 @@ function ProgressBar({ status, seekVideo }) {
 }
 
 ProgressBar.propTypes = {
-  status: PropTypes.string,
-  seekVideo: PropTypes.func
+  seekVideo: PropTypes.func,
+  videoDuration: PropTypes.number,
+  progressBarSize: PropTypes.string
 };
 
 export default ProgressBar;

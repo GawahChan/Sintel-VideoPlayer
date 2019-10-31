@@ -18,7 +18,7 @@ export const ControlsContainer = styled.div`
   color: white;
   width: 100%;
   box-sizing: border-box;
-  padding: 5px;
+  padding: 10px;
 `;
 
 export const ProgressBarContainer = styled.div`
@@ -26,7 +26,7 @@ export const ProgressBarContainer = styled.div`
   display: flex;
   width: 100%;
   cursor: pointer;
-  height: 7px;
+  height: 4px;
 `;
 
 export const BarContainer = styled(motion.div)`
@@ -36,24 +36,28 @@ export const BarContainer = styled(motion.div)`
   width: 100%;
 `;
 
-export const Bar = styled(motion.div)`
+export const Bar = styled(motion.div).attrs(props => ({
+  style: {
+    width: props.Size || '0%'
+  }
+}))`
   background-color: red;
   height: 100%;
-  width: ${props => props.Size || `2px`};
   pointer-events: none;
   z-index: 1;
 `;
 
 export const MarkerContainer = styled.div`
   position: relative;
+  background-color: red;
 `;
 
 export const Marker = styled(motion.div)`
-  top: -4px;
-  right: -3px;
   position: absolute;
-  height: 15px;
-  width: 15px;
+  top: -3px;
+  left: 0;
+  height: 10px;
+  width: 10px;
   background-color: red;
   border-radius: 50%;
 `;
