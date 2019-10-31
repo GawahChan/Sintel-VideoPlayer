@@ -4,33 +4,36 @@ import Controls from './Controls';
 
 function VideoPlayer() {
   const [playVideo, setPlayVideo] = useState(false);
-  const [progressBar, setProgressBar] = useState('0%');
+  const [currentVideoTime, setCurrentVideoTime] = useState(0);
+  const [videoDuration, setVideoDuration] = useState(0);
+  const [progressBarSize, setProgressBarSize] = useState('0%');
+
   const video = useRef(HTMLVideoElement);
 
   const toggleVideo = () => setPlayVideo(!playVideo);
 
   useEffect(() => {
-    playVideo ? updateVideo('play') : updateVideo('pause');
+    playVideo ? video.current.play() : video.current.pause();
   }, [playVideo]);
 
-  const updateVideo = action => {
-    let updateTime = () => {
-      let currentTime = video.current.currentTime;
-      let duration = video.current.duration;
-
-      let progressbar = `${(currentTime / duration) * 100}%`;
-      setProgressBar(progressbar);
-    };
-
-    let updateInterval = setInterval(updateTime, 1000);
-
-    if (action === 'play') {
-      video.current.play();
-    } else {
-      video.current.pause();
-      clearInterval(updateInterval);
-    }
+  const initialVideoTime = () => {
+    let duration = Math.round(video.current.duration);
+    setVideoDuration(duration);
   };
+
+  const updateVideoTime = () => {
+    let currentTime = Math.round(video.current.currentTime);
+    setCurrentVideoTime(currentTime);
+
+    let progressbar = `${(currentTime / videoDuration) * 100}%`;
+    setProgressBarSize(progressbar);
+  };
+
+  const seekVideo = (newVideoTime, newProgressBar) => {
+    video.current.currentTime = newVideoTime;
+    setProgressBarSize(newProgressBar);
+  };
+
   return (
     <VideoPlayerContainer>
       <video
@@ -39,11 +42,15 @@ function VideoPlayer() {
         width="100%"
         height="100%"
         ref={video}
+        onLoadedMetadata={() => initialVideoTime()}
+        onTimeUpdate={() => updateVideoTime()}
       />
       <Controls
         playVideo={playVideo}
         toggleVideo={toggleVideo}
-        progressBar={progressBar}
+        seekVideo={seekVideo}
+        videoDuration={videoDuration}
+        progressBarSize={progressBarSize}
       />
     </VideoPlayerContainer>
   );
