@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 export const Container = styled.div`
+  position: relative;
   padding: 5px;
   box-sizing: border-box;
 `;
@@ -20,31 +21,39 @@ export const ControlsContainer = styled.div`
   padding: 5px;
 `;
 
-export const ProgressBarContainer = styled(motion.div)`
+export const ProgressBarContainer = styled.div`
   position: relative;
+  display: flex;
   width: 100%;
-  background-color: darkgray;
-  color: red;
-
-  height: 7px;
   cursor: pointer;
+  height: 7px;
+`;
+
+export const BarContainer = styled(motion.div)`
+  position: absolute;
+  background-color: darkgray;
+  height: 100%;
+  width: 100%;
 `;
 
 export const Bar = styled(motion.div)`
-  position: absolute;
   background-color: red;
   height: 100%;
   width: ${props => props.Size || `2px`};
   pointer-events: none;
+  z-index: 1;
 `;
 
-export const Marker = styled.div`
-  position: absolute;
-  right: -5px;
+export const MarkerContainer = styled.div`
+  position: relative;
+`;
+
+export const Marker = styled(motion.div)`
   top: -4px;
+  right: -3px;
+  position: absolute;
   height: 15px;
   width: 15px;
   background-color: red;
   border-radius: 50%;
-  cursor: pointer;
 `;

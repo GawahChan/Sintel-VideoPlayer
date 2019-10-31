@@ -27,14 +27,9 @@ function VideoPlayer() {
     playVideo ? video.current.play() : video.current.pause();
   }, [playVideo]);
 
-  const seekVideo = event => {
-    console.log('offsetWidth', event.target.offsetWidth);
-    console.log('event.offsetx', event.offsetX);
-    console.log('event.pageX', event.pageX);
-    let pos =
-      (event.offsetX / event.target.offsetWidth) * video.current.duration;
-    console.log('position', pos);
-    video.current.currentTime = pos;
+  const seekVideo = newPosition => {
+    let newVideoTime = newPosition * video.current.duration;
+    video.current.currentTime = newVideoTime;
   };
 
   console.log('currentVideoTime', currentVideoTime);
