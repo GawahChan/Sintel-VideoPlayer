@@ -1,5 +1,5 @@
 import React from 'react';
-import VideoPlayer from './components/videoplayer/VideoPlayer';
+import VideoPlayer from './components/videoplayer/VideoPlayer.ui';
 import { GlobalStyle, AppContainer } from './styles';
 
 function App() {

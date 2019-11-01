@@ -1,26 +1,6 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
-export const Container = styled.div`
-  position: relative;
-  padding: 5px;
-  box-sizing: border-box;
-`;
-
-export const VideoPlayerContainer = styled.div`
-  position: relative;
-  margin: 10px;
-`;
-
-export const ControlsContainer = styled.div`
-  position: absolute;
-  bottom: 0px;
-  color: white;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 10px;
-`;
-
 export const ProgressBarContainer = styled.div`
   position: relative;
   display: flex;

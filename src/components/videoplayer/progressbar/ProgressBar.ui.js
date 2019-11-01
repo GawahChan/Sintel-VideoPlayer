@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import {
   ProgressBarContainer,
@@ -6,9 +6,17 @@ import {
   Bar,
   MarkerContainer,
   Marker
-} from './styled';
+} from './ProgressBar.styles';
+import ModalBox from '../modalbox/PreviewBox.ui';
 
-function ProgressBar({ seekVideo, videoDuration, progressBarSize }) {
+function ProgressBar({
+  seekVideo,
+  videoDuration,
+  progressBarSize,
+  video,
+  currentVideoTime
+}) {
+  const [displayPreview, setDisplayPreview] = useState(false);
   const progressBarRef = useRef(null);
   const constraintsRef = useRef(null);
 
@@ -22,16 +30,29 @@ function ProgressBar({ seekVideo, videoDuration, progressBarSize }) {
     seekVideo(newVideoTime, newProgressBar);
   };
 
+  const togglePreview = () => {
+    setDisplayPreview(!displayPreview);
+  };
+
   return (
     <ProgressBarContainer ref={progressBarRef}>
       <BarContainer onTap={event => progressBarPosition(event)} />
       <Bar Size={progressBarSize} />
       <MarkerContainer ref={constraintsRef}>
+        <ModalBox
+          display={displayPreview}
+          video={video}
+          currentVideoTime={currentVideoTime}
+        />
         <Marker
           drag="x"
           dragConstraints={constraintsRef}
           dragElastic={0}
           onDrag={event => progressBarPosition(event)}
+          onDragStart={() => togglePreview()}
+          onDragEnd={() => togglePreview()}
+          whileHover={() => togglePreview()}
+          onHoverEnd={() => togglePreview()}
         />
       </MarkerContainer>
     </ProgressBarContainer>
@@ -41,7 +62,9 @@ function ProgressBar({ seekVideo, videoDuration, progressBarSize }) {
 ProgressBar.propTypes = {
   seekVideo: PropTypes.func,
   videoDuration: PropTypes.number,
-  progressBarSize: PropTypes.string
+  progressBarSize: PropTypes.string,
+  video: PropTypes.object,
+  currentVideoTime: PropTypes.number
 };
 
 export default ProgressBar;
