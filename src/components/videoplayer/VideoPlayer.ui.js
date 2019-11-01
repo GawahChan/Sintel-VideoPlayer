@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { VideoPlayerContainer } from './styled';
-import Controls from './Controls';
+import { VideoPlayerContainer } from './VideoPlayer.styles';
+import Controls from './controls/Controls.ui';
 
 function VideoPlayer() {
   const [playVideo, setPlayVideo] = useState(false);
@@ -35,24 +35,29 @@ function VideoPlayer() {
   };
 
   return (
-    <VideoPlayerContainer>
-      <video
-        id="videoplayer"
-        src="http://peach.themazzone.com/durian/movies/sintel-2048-surround.mp4"
-        width="100%"
-        height="100%"
-        ref={video}
-        onLoadedMetadata={() => initialVideoTime()}
-        onTimeUpdate={() => updateVideoTime()}
-      />
-      <Controls
-        playVideo={playVideo}
-        toggleVideo={toggleVideo}
-        seekVideo={seekVideo}
-        videoDuration={videoDuration}
-        progressBarSize={progressBarSize}
-      />
-    </VideoPlayerContainer>
+    <div>
+      <VideoPlayerContainer>
+        <video
+          id="videoplayer"
+          src="http://peach.themazzone.com/durian/movies/sintel-2048-surround.mp4"
+          width="100%"
+          height="100%"
+          ref={video}
+          onLoadedMetadata={() => initialVideoTime()}
+          onTimeUpdate={() => updateVideoTime()}
+          crossOrigin
+        />
+        <Controls
+          playVideo={playVideo}
+          toggleVideo={toggleVideo}
+          seekVideo={seekVideo}
+          videoDuration={videoDuration}
+          progressBarSize={progressBarSize}
+          video={video}
+          currentVideoTime={currentVideoTime}
+        />
+      </VideoPlayerContainer>
+    </div>
   );
 }
 
