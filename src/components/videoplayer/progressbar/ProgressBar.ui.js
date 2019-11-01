@@ -22,11 +22,15 @@ function ProgressBar({
 
   const progressBarPosition = event => {
     let offsetWidth = progressBarRef.current.offsetWidth;
-    let videoPosition = (event.pageX - 25) / offsetWidth;
+    let clickedPosition =
+      offsetWidth > 2000 ? event.pageX - 125 : event.pageX - 25;
+    let videoPosition = clickedPosition / offsetWidth;
 
     let newVideoTime = videoPosition * videoDuration;
     let newProgressBar = `${videoPosition * 100}%`;
 
+    console.log('offsetWidth', offsetWidth);
+    console.log('event.pageX', event.pageX);
     seekVideo(newVideoTime, newProgressBar);
   };
 
