@@ -1,5 +1,7 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
+import HotSpot from '../hotspot/HotSpot.ui';
+import PreviewBox from '../previewbox/PreviewBox.ui';
 import {
   ProgressBarContainer,
   BarContainer,
@@ -7,7 +9,6 @@ import {
   MarkerContainer,
   Marker
 } from './ProgressBar.styles';
-import ModalBox from '../modalbox/PreviewBox.ui';
 
 function ProgressBar({
   seekVideo,
@@ -17,20 +18,23 @@ function ProgressBar({
   currentVideoTime
 }) {
   const [displayPreview, setDisplayPreview] = useState(false);
-  const progressBarRef = useRef(null);
-  const constraintsRef = useRef(null);
+  const [progressBarWidth, setProgressBarWidth] = useState(0);
+  const progressBarRef = useRef(HTMLDivElement);
+  const constraintsRef = useRef(HTMLDivElement);
+
+  useEffect(() => {
+    let newWidth = progressBarRef.current.offsetWidth;
+    setProgressBarWidth(newWidth);
+  }, [progressBarRef.current.offsetWidth]);
 
   const progressBarPosition = event => {
-    let offsetWidth = progressBarRef.current.offsetWidth;
     let clickedPosition =
-      offsetWidth > 2000 ? event.pageX - 125 : event.pageX - 25;
-    let videoPosition = clickedPosition / offsetWidth;
+      progressBarWidth > 2000 ? event.pageX - 125 : event.pageX - 25;
+    let videoPosition = clickedPosition / progressBarWidth;
 
     let newVideoTime = videoPosition * videoDuration;
     let newProgressBar = `${videoPosition * 100}%`;
 
-    console.log('offsetWidth', offsetWidth);
-    console.log('event.pageX', event.pageX);
     seekVideo(newVideoTime, newProgressBar);
   };
 
@@ -38,12 +42,20 @@ function ProgressBar({
     setDisplayPreview(!displayPreview);
   };
 
+  console.log('progressBarWidth', progressBarWidth);
+  console.log('currentTIme', currentVideoTime);
+
   return (
     <ProgressBarContainer ref={progressBarRef}>
+      <HotSpot
+        progressBarWidth={progressBarWidth}
+        hotSpotTimeStamp={18}
+        hotSpotText="Winter has come!"
+      />
       <BarContainer onTap={event => progressBarPosition(event)} />
       <Bar Size={progressBarSize} />
       <MarkerContainer ref={constraintsRef}>
-        <ModalBox
+        <PreviewBox
           display={displayPreview}
           video={video}
           currentVideoTime={currentVideoTime}
