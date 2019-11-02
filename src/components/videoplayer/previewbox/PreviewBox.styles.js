@@ -2,20 +2,24 @@ import styled from 'styled-components';
 
 export const PreviewBoxContainer = styled.div.attrs(props => ({
   style: {
-    display: props.display
+    display: props.display,
+    left: props.position || '-75px'
   }
 }))`
   justify-content: center;
   align-content: center;
 
   position: absolute;
+  overflow: hidden;
   top: -110px;
-  left: -75px;
-  right: 0;
+
   height: 100px;
   width: 150px;
+
   box-sizing: border-box;
-  border: 2px solid black;
+  border: 2px solid #232b2b;
+  border-radius: 5px;
+  transition: 0.5s left ease;
 `;
 
 export const Canvas = styled.canvas`

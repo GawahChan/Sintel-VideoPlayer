@@ -18,6 +18,7 @@ function ProgressBar({
   currentVideoTime
 }) {
   const [displayPreview, setDisplayPreview] = useState(false);
+  const [previewBoxPosition, setPreviewBoxPosition] = useState('0px');
   const [progressBarWidth, setProgressBarWidth] = useState(0);
   const progressBarRef = useRef(HTMLDivElement);
   const constraintsRef = useRef(HTMLDivElement);
@@ -27,7 +28,8 @@ function ProgressBar({
     setProgressBarWidth(newWidth);
   }, [progressBarRef.current.offsetWidth]);
 
-  const progressBarPosition = event => {
+  const progressBarPosition = (event, action) => {
+    togglePreview(event, action);
     let clickedPosition =
       progressBarWidth > 2000 ? event.pageX - 125 : event.pageX - 25;
     let videoPosition = clickedPosition / progressBarWidth;
@@ -38,12 +40,39 @@ function ProgressBar({
     seekVideo(newVideoTime, newProgressBar);
   };
 
-  const togglePreview = () => {
-    setDisplayPreview(!displayPreview);
-  };
+  const togglePreview = (event, action) => {
+    let markerPosition = event.pageX;
+    let videoMargin = Math.round((window.innerWidth - progressBarWidth) / 2);
 
-  console.log('progressBarWidth', progressBarWidth);
-  console.log('currentTIme', currentVideoTime);
+    let previewBoxCenter = 75;
+    let previewBoxLeft = markerPosition - videoMargin;
+    let previewBoxRight =
+      markerPosition - progressBarWidth - videoMargin + previewBoxCenter * 2;
+
+    let previewBoxLeftBoundary = previewBoxCenter + videoMargin;
+    let previewBoxRightBoundary = progressBarWidth - previewBoxCenter;
+
+    let newPreviewBoxPosition =
+      markerPosition < previewBoxLeftBoundary
+        ? `-${previewBoxLeft}px`
+        : markerPosition > previewBoxRightBoundary
+        ? `-${previewBoxRight}px`
+        : `-${previewBoxCenter}px`;
+
+    let displayPreview =
+      action === 'OnDrag'
+        ? true
+        : action === 'OnDragEnd'
+        ? false
+        : action === 'HoverStart'
+        ? true
+        : action === 'HoverEnd'
+        ? false
+        : false;
+
+    setPreviewBoxPosition(newPreviewBoxPosition);
+    setDisplayPreview(displayPreview);
+  };
 
   return (
     <ProgressBarContainer ref={progressBarRef}>
@@ -66,16 +95,16 @@ function ProgressBar({
           display={displayPreview}
           video={video}
           currentVideoTime={currentVideoTime}
+          position={previewBoxPosition}
         />
         <Marker
           drag="x"
           dragConstraints={constraintsRef}
           dragElastic={0}
-          onDrag={event => progressBarPosition(event)}
-          onDragStart={() => togglePreview()}
-          onDragEnd={() => togglePreview()}
-          whileHover={() => togglePreview()}
-          onHoverEnd={() => togglePreview()}
+          onDrag={event => progressBarPosition(event, 'OnDrag')}
+          onDragEnd={event => togglePreview(event, 'OnDragEnd')}
+          onHoverStart={event => togglePreview(event, 'HoverStart')}
+          onHoverEnd={event => togglePreview(event, 'HoverEnd')}
         />
       </MarkerContainer>
     </ProgressBarContainer>
