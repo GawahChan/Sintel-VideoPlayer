@@ -1,8 +1,8 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 export const HotSpotContainer = styled.div.attrs(props => ({
   style: {
-    display: props.postion ? 'none' : 'auto',
     left: `${props.position}px`
   }
 }))`
@@ -15,7 +15,8 @@ export const Container = styled.div`
 
 export const ModalBoxContainer = styled.div.attrs(props => ({
   style: {
-    left: props.position
+    left: props.position,
+    display: props.toggleDisplay ? 'block' : 'none'
   }
 }))`
   position: absolute;
@@ -39,7 +40,7 @@ export const Canvas = styled.canvas`
   width: 100%;
 `;
 
-export const HotSpotIcon = styled.div`
+export const HotSpotIcon = styled(motion.div)`
   position: absolute;
   background-image: url(${require('../../../common/icons/HotSpotIcon.svg')});
   background-color: transparent;
@@ -50,7 +51,6 @@ export const HotSpotIcon = styled.div`
   top: -7px;
   left: -5px;
   z-index: 2;
-  pointer-events: none;
 `;
 
 export const Text = styled.p`

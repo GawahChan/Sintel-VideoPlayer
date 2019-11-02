@@ -48,11 +48,13 @@ function ProgressBar({
   return (
     <ProgressBarContainer ref={progressBarRef}>
       <HotSpot
+        updateProgressBar={progressBarPosition}
         progressBarWidth={progressBarWidth}
         hotSpotTimeStamp={25}
         hotSpotText="Winter has come!"
       />
       <HotSpot
+        updateProgressBar={progressBarPosition}
         progressBarWidth={progressBarWidth}
         hotSpotTimeStamp={736}
         hotSpotText="Credits!"

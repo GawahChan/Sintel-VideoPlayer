@@ -10,10 +10,20 @@ import {
   HotSpotIcon
 } from './HotSpot.styles';
 
-function HotSpot({ progressBarWidth, hotSpotTimeStamp, hotSpotText }) {
+function HotSpot({
+  updateProgressBar,
+  progressBarWidth,
+  hotSpotTimeStamp,
+  hotSpotText
+}) {
   const [hotSpotPosition, setHotSpotPosition] = useState(0);
   const [modalBoxPosition, setModalBoxPosition] = useState(0);
+  const [displayModalBox, setDisplayModalBox] = useState(false);
   const canvasRef = useRef(null);
+
+  const toggleModalBoxDisplay = () => {
+    setDisplayModalBox(!displayModalBox);
+  };
 
   useEffect(() => {
     const HotSpotThumbNail = () => {
@@ -72,24 +82,30 @@ function HotSpot({ progressBarWidth, hotSpotTimeStamp, hotSpotText }) {
     HotSpotThumbNail();
   }, [hotSpotPosition, hotSpotTimeStamp, progressBarWidth]);
 
-  console.log('position', hotSpotPosition);
-
   return (
     <HotSpotContainer position={hotSpotPosition}>
       <Container>
-        <ModalBoxContainer position={modalBoxPosition}>
+        <ModalBoxContainer
+          position={modalBoxPosition}
+          toggleDisplay={displayModalBox}
+        >
           <CanvasContainer>
             <Canvas ref={canvasRef} />
           </CanvasContainer>
           <Text>{hotSpotText}</Text>
         </ModalBoxContainer>
-        <HotSpotIcon />
+        <HotSpotIcon
+          onHoverStart={() => toggleModalBoxDisplay()}
+          onHoverEnd={() => toggleModalBoxDisplay()}
+          onTap={event => updateProgressBar(event)}
+        />
       </Container>
     </HotSpotContainer>
   );
 }
 
 HotSpot.propTypes = {
+  updateProgressBar: PropTypes.func,
   progressBarWidth: PropTypes.number,
   hotSpotTimeStamp: PropTypes.number,
   hotSpotText: PropTypes.string
