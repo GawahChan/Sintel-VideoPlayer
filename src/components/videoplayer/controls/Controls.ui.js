@@ -17,7 +17,6 @@ function Controls({
   return (
     <ControlsContainer>
       <Container>
-        {/* <ModalBox video={video} currentVideoTime={currentVideoTime} /> */}
         <ProgressBar
           seekVideo={seekVideo}
           videoDuration={videoDuration}
