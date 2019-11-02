@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { PreviewBoxContainer, Canvas } from './PreviewBox.styles';
 
-function ModalBox({ display, video, currentVideoTime }) {
+function PreviewBox({ display, video, currentVideoTime, position }) {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -13,16 +13,20 @@ function ModalBox({ display, video, currentVideoTime }) {
   }, [currentVideoTime, video]);
 
   return (
-    <PreviewBoxContainer display={display ? 'flex' : 'none'}>
+    <PreviewBoxContainer
+      display={display ? 'flex' : 'none'}
+      position={position}
+    >
       <Canvas id="canvas" ref={canvasRef} />
     </PreviewBoxContainer>
   );
 }
 
-ModalBox.propTypes = {
+PreviewBox.propTypes = {
   display: PropTypes.bool,
   video: PropTypes.object,
-  currentVideoTime: PropTypes.number
+  currentVideoTime: PropTypes.number,
+  position: PropTypes.string
 };
 
-export default ModalBox;
+export default PreviewBox;
