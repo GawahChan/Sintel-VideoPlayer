@@ -40,4 +40,5 @@ export const Marker = styled(motion.div)`
   width: 10px;
   background-color: red;
   border-radius: 50%;
+  z-index: 2;
 `;

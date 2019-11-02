@@ -12,7 +12,6 @@ function ModalBox({ display, video, currentVideoTime }) {
     ctx.drawImage(video.current, 0, 0, canvas.width, canvas.height);
   }, [currentVideoTime, video]);
 
-  console.log('display', display);
   return (
     <PreviewBoxContainer display={display ? 'flex' : 'none'}>
       <Canvas id="canvas" ref={canvasRef} />

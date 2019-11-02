@@ -45,7 +45,6 @@ function VideoPlayer() {
           ref={video}
           onLoadedMetadata={() => initialVideoTime()}
           onTimeUpdate={() => updateVideoTime()}
-          crossOrigin
         />
         <Controls
           playVideo={playVideo}
