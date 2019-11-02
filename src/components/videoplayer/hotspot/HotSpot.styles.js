@@ -15,7 +15,7 @@ export const Container = styled.div`
 
 export const ModalBoxContainer = styled.div.attrs(props => ({
   style: {
-    left: props.position < 50 ? '-30px' : `-${props.position}px`
+    left: props.position
   }
 }))`
   position: absolute;
@@ -48,6 +48,9 @@ export const HotSpotIcon = styled.div`
   height: 15px;
   width: 15px;
   top: -7px;
+  left: -5px;
+  z-index: 2;
+  pointer-events: none;
 `;
 
 export const Text = styled.p`

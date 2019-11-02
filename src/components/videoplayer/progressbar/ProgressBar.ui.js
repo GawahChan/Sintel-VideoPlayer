@@ -49,8 +49,13 @@ function ProgressBar({
     <ProgressBarContainer ref={progressBarRef}>
       <HotSpot
         progressBarWidth={progressBarWidth}
-        hotSpotTimeStamp={18}
+        hotSpotTimeStamp={25}
         hotSpotText="Winter has come!"
+      />
+      <HotSpot
+        progressBarWidth={progressBarWidth}
+        hotSpotTimeStamp={736}
+        hotSpotText="Credits!"
       />
       <BarContainer onTap={event => progressBarPosition(event)} />
       <Bar Size={progressBarSize} />
