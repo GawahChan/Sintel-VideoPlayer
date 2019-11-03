@@ -30,8 +30,9 @@ function ProgressBar({
 
   const progressBarPosition = (event, action) => {
     togglePreview(event, action);
-    let clickedPosition =
-      progressBarWidth > 2000 ? event.pageX - 125 : event.pageX - 25;
+    let videoMargin = Math.round((window.innerWidth - progressBarWidth) / 2);
+
+    let clickedPosition = event.pageX - videoMargin;
     let videoPosition = clickedPosition / progressBarWidth;
 
     let newVideoTime = videoPosition * videoDuration;
