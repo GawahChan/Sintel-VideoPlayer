@@ -10,7 +10,7 @@ export const ControlsContainer = styled.div.attrs(props => ({
   width: 100%;
   box-sizing: border-box;
   padding: 10px;
-  transition: bottom 1s ease;
+  transition: bottom 1.5s ease;
 `;
 
 export const Container = styled.div`

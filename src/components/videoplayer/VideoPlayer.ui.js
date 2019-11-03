@@ -37,31 +37,27 @@ function VideoPlayer() {
 
   const toggleControls = action => {
     let display =
-      action === 'HoverStart'
+      action === 'Clicked'
+        ? !displayControls
+        : action === 'HoverStart'
         ? true
         : action === 'HoverEnd'
         ? false
-        : !displayControls;
-
-    if (action === 'HoverEnd') {
-      setTimeout(() => {
-        setDisplayControls(display);
-      }, 2000);
-    } else {
-      setDisplayControls(display);
-    }
+        : false;
+    setDisplayControls(display);
   };
 
   return (
-    <VideoPlayerContainer>
+    <VideoPlayerContainer
+      onHoverStart={() => toggleControls('HoverStart')}
+      onHoverEnd={() => toggleControls('HoverEnd')}
+    >
       <Video
         src="http://peach.themazzone.com/durian/movies/sintel-2048-surround.mp4"
         ref={video}
         onLoadedMetadata={() => initialVideoTime()}
         onTimeUpdate={() => updateVideoTime()}
-        onClick={() => toggleControls()}
-        onHoverStart={() => toggleControls('HoverStart')}
-        onHoverEnd={() => toggleControls('HoverEnd')}
+        onClick={() => toggleControls('Clicked')}
       />
       <Controls
         playVideo={playVideo}
