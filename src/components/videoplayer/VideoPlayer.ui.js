@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { VideoPlayerContainer, Video } from './VideoPlayer.styles';
+import Loader from '../../common/loader/Loader.ui';
 import Controls from './controls/Controls.ui';
+import { VideoPlayerContainer, Video } from './VideoPlayer.styles';
+import { AnimatePresence } from 'framer-motion';
 
 function VideoPlayer() {
   const [playVideo, setPlayVideo] = useState(false);
@@ -8,6 +10,7 @@ function VideoPlayer() {
   const [currentVideoTime, setCurrentVideoTime] = useState(0);
   const [videoDuration, setVideoDuration] = useState(0);
   const [progressBarSize, setProgressBarSize] = useState('0%');
+  const [seeking, setSeeking] = useState(false);
 
   const video = useRef(HTMLVideoElement);
 
@@ -58,7 +61,10 @@ function VideoPlayer() {
         onLoadedMetadata={() => initialVideoTime()}
         onTimeUpdate={() => updateVideoTime()}
         onClick={() => toggleControls('Clicked')}
+        onSeeking={() => setSeeking(true)}
+        onSeeked={() => setSeeking(false)}
       />
+      <AnimatePresence>{seeking && <Loader />}</AnimatePresence>
       <Controls
         playVideo={playVideo}
         displayControls={displayControls}

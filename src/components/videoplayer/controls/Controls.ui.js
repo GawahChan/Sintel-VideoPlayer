@@ -7,7 +7,7 @@ import {
   PauseIcon,
   FullScreenIcon,
   SmallScreenIcon
-} from '../../../common/styled';
+} from '../../../common/icons/styled';
 import {
   ControlsContainer,
   Container,
