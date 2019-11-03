@@ -74,19 +74,45 @@ function ProgressBar({
     setDisplayPreview(displayPreview);
   };
 
+  console.log('time', currentVideoTime);
+
   return (
     <ProgressBarContainer ref={progressBarRef}>
       <HotSpot
         updateProgressBar={progressBarPosition}
         progressBarWidth={progressBarWidth}
         hotSpotTimeStamp={25}
-        hotSpotText="Winter has come!"
+        hotSpotText="Skip to beginning!"
+      />
+      <HotSpot
+        updateProgressBar={progressBarPosition}
+        progressBarWidth={progressBarWidth}
+        hotSpotTimeStamp={148}
+        hotSpotText="Flashback Scene"
+      />
+      <HotSpot
+        updateProgressBar={progressBarPosition}
+        progressBarWidth={progressBarWidth}
+        hotSpotTimeStamp={345}
+        hotSpotText="Epic Journey Montage"
+      />
+      <HotSpot
+        updateProgressBar={progressBarPosition}
+        progressBarWidth={progressBarWidth}
+        hotSpotTimeStamp={539}
+        hotSpotText="Dracarys!"
       />
       <HotSpot
         updateProgressBar={progressBarPosition}
         progressBarWidth={progressBarWidth}
         hotSpotTimeStamp={736}
-        hotSpotText="Credits!"
+        hotSpotText="Skip to credits!"
+      />
+      <HotSpot
+        updateProgressBar={progressBarPosition}
+        progressBarWidth={progressBarWidth}
+        hotSpotTimeStamp={885}
+        hotSpotText="Check out sintel.org for more info about this film!"
       />
       <BarContainer onTap={event => progressBarPosition(event)} />
       <Bar Size={progressBarSize} />
