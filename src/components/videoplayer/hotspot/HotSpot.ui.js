@@ -83,11 +83,19 @@ function HotSpot({
   }, [hotSpotPosition, hotSpotTimeStamp, progressBarWidth]);
 
   return (
-    <HotSpotContainer position={hotSpotPosition}>
+    <HotSpotContainer
+      initial={{ opacity: -5 }}
+      animate={{ x: hotSpotPosition, opacity: 1 }}
+      transition={{ duration: 4 }}
+    >
       <Container>
         <ModalBoxContainer
-          position={modalBoxPosition}
-          toggleDisplay={displayModalBox}
+          animate={{
+            x: modalBoxPosition,
+            opacity: displayModalBox ? 1 : 0,
+            display: displayModalBox ? 'flex' : 'none'
+          }}
+          transition={{ duration: 0.5 }}
         >
           <CanvasContainer>
             <Canvas ref={canvasRef} />

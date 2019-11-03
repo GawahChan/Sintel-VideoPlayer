@@ -1,24 +1,16 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
-export const HotSpotContainer = styled.div.attrs(props => ({
-  style: {
-    left: `${props.position}px`
-  }
-}))`
+export const HotSpotContainer = styled(motion.div)`
   position: absolute;
+  z-index: 1;
 `;
 
 export const Container = styled.div`
   position: relative;
 `;
 
-export const ModalBoxContainer = styled.div.attrs(props => ({
-  style: {
-    left: props.position,
-    display: props.toggleDisplay ? 'flex' : 'none'
-  }
-}))`
+export const ModalBoxContainer = styled(motion.div)`
   flex-direction: column;
   justify-content: space-between;
 
@@ -37,7 +29,6 @@ export const CanvasContainer = styled.div`
   height: 150px;
   width: 200px;
   border-radius: 5px;
-  border: 1px solid black;
   overflow: hidden;
 `;
 
