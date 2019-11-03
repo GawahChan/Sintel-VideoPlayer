@@ -48,6 +48,8 @@ function VideoPlayer() {
         ? false
         : false;
     setDisplayControls(display);
+
+    if (action === 'Clicked') toggleVideo();
   };
 
   return (

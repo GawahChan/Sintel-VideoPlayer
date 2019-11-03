@@ -11,7 +11,6 @@ export const ControlsContainer = styled.div.attrs(props => ({
   box-sizing: border-box;
   padding: 10px;
   transition: bottom 1.5s ease;
-  overflow: hidden;
 `;
 
 export const Container = styled.div`
