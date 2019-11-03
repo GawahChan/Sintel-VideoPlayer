@@ -11,17 +11,17 @@ export const Icon = styled.button`
 `;
 
 export const PlayIcon = styled(Icon)`
-  background-image: url(${require('./icons/PlayIcon.svg')});
+  background-image: url(${require('./PlayIcon.svg')});
 `;
 
 export const PauseIcon = styled(Icon)`
-  background-image: url(${require('./icons/PauseIcon.svg')});
+  background-image: url(${require('./PauseIcon.svg')});
 `;
 
 export const FullScreenIcon = styled(Icon)`
-  background-image: url(${require('./icons/FullScreenIcon.svg')});
+  background-image: url(${require('./FullScreenIcon.svg')});
 `;
 
 export const SmallScreenIcon = styled(Icon)`
-  background-image: url(${require('./icons/SmallScreenIcon.svg')});
+  background-image: url(${require('./SmallScreenIcon.svg')});
 `;
