@@ -16,15 +16,19 @@ export const Container = styled.div`
 export const ModalBoxContainer = styled.div.attrs(props => ({
   style: {
     left: props.position,
-    display: props.toggleDisplay ? 'block' : 'none'
+    display: props.toggleDisplay ? 'flex' : 'none'
   }
 }))`
+  flex-direction: column;
+  justify-content: space-between;
+
   position: absolute;
   top: -210px;
+
   height: 200px;
-  border: 2px solid black;
+  border: 2px solid #232b2b;
   border-radius: 5px;
-  background-color: rgba(0, 0, 0, 0.85);
+  background-color: #232b2b;
   overflow: hidden;
   z-index: 1;
 `;
@@ -32,7 +36,9 @@ export const ModalBoxContainer = styled.div.attrs(props => ({
 export const CanvasContainer = styled.div`
   height: 150px;
   width: 200px;
-  border-bottom: 2px solid black;
+  border-radius: 5px;
+  border: 1px solid black;
+  overflow: hidden;
 `;
 
 export const Canvas = styled.canvas`
@@ -54,6 +60,10 @@ export const HotSpotIcon = styled(motion.div)`
 `;
 
 export const Text = styled.p`
-  text-align: center;
+  flex: 1;
   margin: 0;
+
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
 `;
