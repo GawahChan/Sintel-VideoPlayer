@@ -7,6 +7,7 @@ import { Container, ControlsContainer } from './Controls.styles';
 
 function Controls({
   playVideo,
+  displayControls,
   toggleVideo,
   seekVideo,
   videoDuration,
@@ -15,7 +16,7 @@ function Controls({
   currentVideoTime
 }) {
   return (
-    <ControlsContainer>
+    <ControlsContainer displayControls={displayControls}>
       <Container>
         <ProgressBar
           seekVideo={seekVideo}
@@ -38,6 +39,7 @@ function Controls({
 
 Controls.propTypes = {
   playVideo: PropTypes.bool,
+  displayControls: PropTypes.bool,
   toggleVideo: PropTypes.func,
   seekVideo: PropTypes.func,
   videoDuration: PropTypes.number,

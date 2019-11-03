@@ -7,11 +7,15 @@ export const Container = styled(motion.div)`
   box-sizing: border-box;
 `;
 
-export const ControlsContainer = styled.div`
+export const ControlsContainer = styled.div.attrs(props => ({
+  style: {
+    bottom: props.displayControls ? '0px' : '-150px'
+  }
+}))`
   position: absolute;
-  bottom: 0px;
   color: white;
   width: 100%;
   box-sizing: border-box;
   padding: 10px;
+  transition: bottom 1s ease;
 `;

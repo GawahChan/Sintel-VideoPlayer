@@ -1,16 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { VideoPlayerContainer } from './VideoPlayer.styles';
+import { VideoPlayerContainer, Video } from './VideoPlayer.styles';
 import Controls from './controls/Controls.ui';
 
 function VideoPlayer() {
   const [playVideo, setPlayVideo] = useState(false);
+  const [displayControls, setDisplayControls] = useState(false);
   const [currentVideoTime, setCurrentVideoTime] = useState(0);
   const [videoDuration, setVideoDuration] = useState(0);
   const [progressBarSize, setProgressBarSize] = useState('0%');
 
   const video = useRef(HTMLVideoElement);
-
-  const toggleVideo = () => setPlayVideo(!playVideo);
 
   useEffect(() => {
     playVideo ? video.current.play() : video.current.pause();
@@ -34,29 +33,47 @@ function VideoPlayer() {
     setProgressBarSize(newProgressBar);
   };
 
+  const toggleVideo = () => setPlayVideo(!playVideo);
+
+  const toggleControls = action => {
+    let display =
+      action === 'HoverStart'
+        ? true
+        : action === 'HoverEnd'
+        ? false
+        : !displayControls;
+
+    if (action === 'HoverEnd') {
+      setTimeout(() => {
+        setDisplayControls(display);
+      }, 2000);
+    } else {
+      setDisplayControls(display);
+    }
+  };
+
   return (
-    <div>
-      <VideoPlayerContainer>
-        <video
-          id="videoplayer"
-          src="http://peach.themazzone.com/durian/movies/sintel-2048-surround.mp4"
-          width="100%"
-          height="100%"
-          ref={video}
-          onLoadedMetadata={() => initialVideoTime()}
-          onTimeUpdate={() => updateVideoTime()}
-        />
-        <Controls
-          playVideo={playVideo}
-          toggleVideo={toggleVideo}
-          seekVideo={seekVideo}
-          videoDuration={videoDuration}
-          progressBarSize={progressBarSize}
-          video={video}
-          currentVideoTime={currentVideoTime}
-        />
-      </VideoPlayerContainer>
-    </div>
+    <VideoPlayerContainer>
+      <Video
+        src="http://peach.themazzone.com/durian/movies/sintel-2048-surround.mp4"
+        ref={video}
+        onLoadedMetadata={() => initialVideoTime()}
+        onTimeUpdate={() => updateVideoTime()}
+        onClick={() => toggleControls()}
+        onHoverStart={() => toggleControls('HoverStart')}
+        onHoverEnd={() => toggleControls('HoverEnd')}
+      />
+      <Controls
+        playVideo={playVideo}
+        displayControls={displayControls}
+        toggleVideo={toggleVideo}
+        seekVideo={seekVideo}
+        videoDuration={videoDuration}
+        progressBarSize={progressBarSize}
+        video={video}
+        currentVideoTime={currentVideoTime}
+      />
+    </VideoPlayerContainer>
   );
 }
 
