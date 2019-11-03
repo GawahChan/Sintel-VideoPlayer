@@ -74,8 +74,6 @@ function ProgressBar({
     setDisplayPreview(displayPreview);
   };
 
-  console.log('time', currentVideoTime);
-
   return (
     <ProgressBarContainer ref={progressBarRef}>
       <HotSpot
