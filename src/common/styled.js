@@ -17,3 +17,11 @@ export const PlayIcon = styled(Icon)`
 export const PauseIcon = styled(Icon)`
   background-image: url(${require('./icons/PauseIcon.svg')});
 `;
+
+export const FullScreenIcon = styled(Icon)`
+  background-image: url(${require('./icons/FullScreenIcon.svg')});
+`;
+
+export const SmallScreenIcon = styled(Icon)`
+  background-image: url(${require('./icons/SmallScreenIcon.svg')});
+`;

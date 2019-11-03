@@ -1,15 +1,8 @@
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
-
-export const Container = styled(motion.div)`
-  position: relative;
-  padding: 5px;
-  box-sizing: border-box;
-`;
 
 export const ControlsContainer = styled.div.attrs(props => ({
   style: {
-    bottom: props.displayControls ? '0px' : '-150px'
+    bottom: props.displayControls ? '0px' : '-350px'
   }
 }))`
   position: absolute;
@@ -18,4 +11,16 @@ export const ControlsContainer = styled.div.attrs(props => ({
   box-sizing: border-box;
   padding: 10px;
   transition: bottom 1s ease;
+`;
+
+export const Container = styled.div`
+  position: relative;
+  padding: 5px;
+  box-sizing: border-box;
+  display: flex;
+`;
+
+export const ButtonsContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
