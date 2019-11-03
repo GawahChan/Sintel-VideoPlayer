@@ -59,7 +59,10 @@ function Controls({
   };
 
   return (
-    <ControlsContainer displayControls={displayControls}>
+    <ControlsContainer
+      animate={{ opacity: displayControls ? 1 : 0 }}
+      transition={{ duration: 1.5 }}
+    >
       <Container>
         <ProgressBar
           seekVideo={seekVideo}
