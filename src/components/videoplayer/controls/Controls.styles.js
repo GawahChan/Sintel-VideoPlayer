@@ -14,9 +14,16 @@ export const ControlsContainer = styled(motion.div)`
 
 export const Container = styled.div`
   position: relative;
-  padding: 5px;
-  box-sizing: border-box;
   display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 5px 15px 5px 15px;
+  box-sizing: border-box;
+`;
+
+export const Text = styled.div`
+  margin: 0;
 `;
 
 export const ButtonsContainer = styled.div`
