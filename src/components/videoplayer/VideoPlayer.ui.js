@@ -64,8 +64,11 @@ function VideoPlayer() {
         onLoadedMetadata={() => initialVideoTime()}
         onTimeUpdate={() => updateVideoTime()}
         onClick={() => toggleControls('Clicked')}
+        onWaiting={() => setSeeking(true)}
+        onLoadStart={() => setSeeking(true)}
         onSeeking={() => setSeeking(true)}
         onSeeked={() => setSeeking(false)}
+        onCanPlay={() => setSeeking(false)}
       />
       <AnimatePresence>{seeking && <Loader />}</AnimatePresence>
       <Controls
