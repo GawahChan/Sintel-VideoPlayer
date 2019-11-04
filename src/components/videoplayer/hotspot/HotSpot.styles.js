@@ -60,4 +60,5 @@ export const TextContainer = styled.div`
 
 export const Text = styled.p`
   margin: 0;
+  text-align: center;
 `;
