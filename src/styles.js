@@ -23,3 +23,8 @@ export const AppContainer = styled.div`
   align-items: center;
   min-height: 100vh;
 `;
+
+export const Text = styled.div`
+  margin: 0;
+  z-index: 1;
+`;

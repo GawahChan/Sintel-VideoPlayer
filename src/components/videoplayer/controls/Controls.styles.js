@@ -22,10 +22,6 @@ export const Container = styled.div`
   box-sizing: border-box;
 `;
 
-export const Text = styled.div`
-  margin: 0;
-`;
-
 export const ButtonsContainer = styled.div`
   display: flex;
   justify-content: space-between;

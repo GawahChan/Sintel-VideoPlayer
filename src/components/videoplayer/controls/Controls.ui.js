@@ -11,9 +11,9 @@ import {
 import {
   ControlsContainer,
   Container,
-  Text,
   ButtonsContainer
 } from './Controls.styles';
+import { Text } from '../../../styles';
 
 function Controls({
   playVideo,
@@ -82,10 +82,9 @@ function Controls({
           videoDuration={videoDuration}
           progressBarSize={progressBarSize}
           video={video}
-          currentVideoTime={currentVideoTime}
+          currentVideoTime={displayedVideoTime}
         />
       </Container>
-
       <ButtonsContainer>
         <Container>
           {playVideo ? (

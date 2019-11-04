@@ -33,6 +33,7 @@ function VideoPlayer() {
 
   const seekVideo = (newVideoTime, newProgressBar) => {
     video.current.currentTime = newVideoTime;
+    setCurrentVideoTime(newVideoTime);
     setProgressBarSize(newProgressBar);
   };
 
