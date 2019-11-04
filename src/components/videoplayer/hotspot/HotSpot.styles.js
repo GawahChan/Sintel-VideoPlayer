@@ -48,11 +48,16 @@ export const HotSpotIcon = styled(motion.div)`
   left: -5px;
 `;
 
-export const Text = styled.p`
+export const TextContainer = styled.div`
   flex: 1;
-  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  text-align: center;
-  padding: 10px;
   box-sizing: border-box;
+  padding: 5px;
+`;
+
+export const Text = styled.p`
+  margin: 0;
 `;
