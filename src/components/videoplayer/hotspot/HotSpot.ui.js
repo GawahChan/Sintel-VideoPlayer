@@ -6,6 +6,7 @@ import {
   ModalBoxContainer,
   CanvasContainer,
   Canvas,
+  TextContainer,
   Text,
   HotSpotIcon
 } from './HotSpot.styles';
@@ -100,7 +101,9 @@ function HotSpot({
           <CanvasContainer>
             <Canvas ref={canvasRef} />
           </CanvasContainer>
-          <Text>{hotSpotText}</Text>
+          <TextContainer>
+            <Text>{hotSpotText}</Text>
+          </TextContainer>
         </ModalBoxContainer>
         <HotSpotIcon
           onHoverStart={() => toggleModalBoxDisplay()}
