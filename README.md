@@ -1,4 +1,4 @@
-### `Unit9 React Video Player`
+# `Unit9 React Video Player`
 
 This project is for the Unit 9 React video player coding test. The project only has a front-end and the user is taken straight to the video player when loaded. The user can interact with the video player by clicking on the buttons inside the video controls, or by dragging/clicking on different sections of the video bar. Dragging the video bar to update the video playback will also show a preview box on top of the video bar, displaying video frames of the dragged position. The user can also start/pause the video by clicking within the video. To toggle whether the video controls are displayed, simply hover over the video or click on the video screen.
 
@@ -6,9 +6,10 @@ The video also contains annotations based on time based hotspots and are represe
 
 Should the screen need to be resized, the hotspots will automatically re-size based on the screen width.
 
-# `The film (Sintel)`
+This project is currently deployed [here](https://unit9-video-player.netlify.com/)
 
-Credits to:
+### `The film credits (Sintel)`
+
 [The Blender Foundation](https://www.blender.org/foundation/)  
 [Durian Open Movie Project](https://durian.blender.org/about/)
 
