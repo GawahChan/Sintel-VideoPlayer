@@ -1,68 +1,32 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### `Unit9 React Video Player`
 
-## Available Scripts
+This project is for the Unit 9 React video player coding test. The project only has a front-end and the user is taken straight to the video player when loaded. The user can interact with the video player by clicking on the buttons inside the video controls, or by dragging/clicking on different sections of the video bar. Dragging the video bar to update the video playback will also show a preview box on top of the video bar, displaying video frames of the dragged position. The user can also start/pause the video by clicking within the video. To toggle whether the video controls are displayed, simply hover over the video or click on the video screen.
 
-In the project directory, you can run:
+The video also contains annotations based on time based hotspots and are represented as stars on the video bar. Rolling over the hotspot will display the annotation in the form of a modal box on top of the video. Each modal box contains a thumbnail of the particular frame as well as a custom description. Clicking on the hotspot will also update the current video time accordingly.
 
-### `yarn start`
+Should the screen need to be resized, the hotspots will automatically re-size based on the screen width.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# `The film (Sintel)`
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Credits to:
+[The Blender Foundation](https://www.blender.org/foundation/)  
+[Durian Open Movie Project](https://durian.blender.org/about/)
 
-### `yarn test`
+## `Project Stack`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- JavaScript throughout the project
+- [Create React App](https://github.com/facebook/create-react-app).
+- [PropTypes](https://github.com/facebook/prop-types) for declaring props
+- [Styled-Components](https://www.styled-components.com/) for custom stylings
+- HTML canvas for rendering thumbnails
+- [Framer-Motion](https://www.framer.com/motion/) for implementing gestures as well as for animations
 
-### `yarn build`
+## `Getting Started`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Run `npm install` from the root of the project, this will install the modules for all packages
+- Run `npm start`from the root of the project and the app should open in the browser
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## `Contributing`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- Branch from master, naming your branch `feature/<name of feature>` or `fix/<problem you are fixing>` (`git checkout -b <name of branch>`)
+- Create a pull request
