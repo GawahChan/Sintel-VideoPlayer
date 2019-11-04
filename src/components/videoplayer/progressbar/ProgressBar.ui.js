@@ -104,7 +104,7 @@ function ProgressBar({
       <HotSpot
         updateProgressBar={progressBarPosition}
         progressBarWidth={progressBarWidth}
-        hotSpotTimeStamp={736}
+        hotSpotTimeStamp={740}
         hotSpotText="Skip to credits!"
       />
       <HotSpot
