@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-
 import ProgressBar from '../progressbar/ProgressBar.ui';
+import getTime from '../../../helpers/GetTime';
 import {
   PlayIcon,
   PauseIcon,
@@ -13,18 +13,31 @@ import {
   Container,
   ButtonsContainer
 } from './Controls.styles';
+import { Text } from '../../../styles';
 
 function Controls({
   playVideo,
   displayControls,
   toggleVideo,
   seekVideo,
-  videoDuration,
   progressBarSize,
   video,
+  videoDuration,
   currentVideoTime
 }) {
   const [displayFullScreen, setDisplayFullScreen] = useState(false);
+  const [displayedVideoTime, setDisplayedVideoTime] = useState('00:00');
+  const [displayedVideoDuration, setDisplayedVideoDuration] = useState('00:00');
+
+  useEffect(() => {
+    let newDisplayedTime = getTime(currentVideoTime);
+    setDisplayedVideoTime(newDisplayedTime);
+  }, [currentVideoTime]);
+
+  useEffect(() => {
+    let newDisplayedVideoDuration = getTime(videoDuration);
+    setDisplayedVideoDuration(newDisplayedVideoDuration);
+  }, [videoDuration]);
 
   const toggleScreenIcon = () => {
     setDisplayFullScreen(!displayFullScreen);
@@ -69,7 +82,7 @@ function Controls({
           videoDuration={videoDuration}
           progressBarSize={progressBarSize}
           video={video}
-          currentVideoTime={currentVideoTime}
+          currentVideoTime={displayedVideoTime}
         />
       </Container>
       <ButtonsContainer>
@@ -79,6 +92,9 @@ function Controls({
           ) : (
             <PlayIcon onClick={() => toggleVideo()} />
           )}
+          <Container>
+            <Text>{`${displayedVideoTime}/${displayedVideoDuration}`}</Text>
+          </Container>
         </Container>
         <Container>
           {displayFullScreen ? (
@@ -97,9 +113,9 @@ Controls.propTypes = {
   displayControls: PropTypes.bool,
   toggleVideo: PropTypes.func,
   seekVideo: PropTypes.func,
-  videoDuration: PropTypes.number,
   progressBarSize: PropTypes.string,
   video: PropTypes.object,
+  videoDuration: PropTypes.number,
   currentVideoTime: PropTypes.number
 };
 export default Controls;

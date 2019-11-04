@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 export const HotSpotContainer = styled(motion.div)`
   position: absolute;
-  z-index: 1;
+  z-index: 2;
 `;
 
 export const Container = styled.div`
@@ -22,7 +22,6 @@ export const ModalBoxContainer = styled(motion.div)`
   border-radius: 5px;
   background-color: #232b2b;
   overflow: hidden;
-  z-index: 1;
 `;
 
 export const CanvasContainer = styled.div`
@@ -47,7 +46,6 @@ export const HotSpotIcon = styled(motion.div)`
   width: 15px;
   top: -7px;
   left: -5px;
-  z-index: 2;
 `;
 
 export const Text = styled.p`

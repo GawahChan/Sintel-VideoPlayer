@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { PreviewBoxContainer, Canvas } from './PreviewBox.styles';
+import { Text } from '../../../styles';
 
 function PreviewBox({ display, video, currentVideoTime, position }) {
   const canvasRef = useRef(null);
@@ -18,6 +19,7 @@ function PreviewBox({ display, video, currentVideoTime, position }) {
       position={position}
     >
       <Canvas id="canvas" ref={canvasRef} />
+      <Text>{currentVideoTime}</Text>
     </PreviewBoxContainer>
   );
 }

@@ -7,7 +7,7 @@ export const PreviewBoxContainer = styled.div.attrs(props => ({
   }
 }))`
   justify-content: center;
-  align-content: center;
+  align-items: flex-end;
 
   position: absolute;
   overflow: hidden;
@@ -23,6 +23,7 @@ export const PreviewBoxContainer = styled.div.attrs(props => ({
 `;
 
 export const Canvas = styled.canvas`
+  position: absolute;
   width: 100%;
   height: 100%;
 `;
