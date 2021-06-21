@@ -6,6 +6,8 @@ The video also contains annotations based on time based hotspots and are represe
 
 Should the screen need to be resized, the hotspots will automatically re-size based on the screen width.
 
+This site is deployed [here](https://gc-sintel-videoplayer.netlify.app/)
+
 ### `The film credits (Sintel)`
 
 [The Blender Foundation](https://www.blender.org/foundation/)  
